@@ -1,0 +1,38 @@
+:root {
+  --bg: #ffffff; --fg: #1f1f1f; --muted: #616161; --line: #e0e0e0;
+  --safe: #107c10; --safe-bg: #dff6dd;
+  --caution: #8a5a00; --caution-bg: #fff4ce;
+  --danger: #a4262c; --danger-bg: #fde7e9;
+  --accent: #0f6cbd;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1f1f; --fg: #f0f0f0; --muted: #b0b0b0; --line: #3a3a3a;
+    --safe: #6ccb5f; --safe-bg: #1e3b1c;
+    --caution: #f2c661; --caution-bg: #3d3214;
+    --danger: #ff99a4; --danger-bg: #442726;
+    --accent: #62abf5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 14px/1.4 "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--fg); }
+header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+header h1 { font-size: 16px; margin: 0; flex: 1; }
+button { font: inherit; padding: 4px 12px; border: 1px solid var(--accent); color: var(--accent); background: transparent; border-radius: 4px; cursor: pointer; }
+main { padding: 16px; }
+.muted { color: var(--muted); font-size: 12px; }
+.verdict { display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: 8px; }
+.verdict p { margin: 2px 0 0; font-size: 12px; }
+.verdict.safe { background: var(--safe-bg); color: var(--safe); }
+.verdict.caution { background: var(--caution-bg); color: var(--caution); }
+.verdict.danger { background: var(--danger-bg); color: var(--danger); }
+.score { font-size: 28px; font-weight: 700; min-width: 64px; text-align: center; }
+.score span { font-size: 12px; font-weight: 400; }
+.from { word-break: break-all; font-size: 12px; color: var(--muted); }
+.findings { list-style: none; padding: 0; margin: 0; }
+.findings li { display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.findings small { display: block; color: var(--muted); word-break: break-word; }
+.findings .ic { width: 20px; text-align: center; }
+.findings .high strong { color: var(--danger); }
+.findings .medium strong { color: var(--caution); }
+.findings .ok strong { color: var(--safe); }
