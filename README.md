@@ -34,7 +34,7 @@ Sideloading (installing your own add-in) needs a computer browser. The Outlook p
 
 **Classic Outlook for Windows / Mac:** add-ins installed on the web sync automatically. Otherwise use **File → Manage Add-ins** (Windows) or **Get Add-ins** (Mac), which take you to the same page.
 
-**Use it:** open any email and click **Scan email** (MailGuard) in the toolbar. On the web it may sit under the **Apps** button or the **…** menu. Pin the pane to re-scan automatically as you move between emails.
+**Use it:** open any email and click **Scan email** (MailGuard) in the toolbar. On the web it may sit under the **Apps** button or the **…** menu. Click it again on each email you want to check.
 
 > Work/school accounts: your IT admin may have disabled custom add-ins. If **Add a custom add-in** is missing, ask them, or they can deploy `manifest.xml` for you from the Microsoft 365 admin center.
 
