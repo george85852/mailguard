@@ -8,9 +8,12 @@ Office.onReady(function (info) {
   }
   document.getElementById("rescan").addEventListener("click", scan);
   // Re-scan when the user selects another email while the pane is pinned.
-  if (Office.context.requirements.isSetSupported("Mailbox", "1.5")) {
-    Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, scan);
-  }
+  // Not available on every client (e.g. some mobile versions), so ignore failures.
+  try {
+    if (Office.context.requirements.isSetSupported("Mailbox", "1.5")) {
+      Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, scan);
+    }
+  } catch (e) { /* no pinning support */ }
   scan();
 });
 
@@ -70,10 +73,10 @@ async function scan() {
     userDomain: MailGuard.domainOf(userEmail)
   });
 
-  render(result, from);
+  render(result, from, !!headers);
 }
 
-function render(r, from) {
+function render(r, from, hadHeaders) {
   const labels = {
     safe: ["No obvious red flags", "Still be careful with links and attachments you didn't expect."],
     caution: ["Be careful", "This email has some warning signs. Check the sender before you click or reply."],
@@ -95,6 +98,9 @@ function render(r, from) {
         esc(f.title) + "</strong><small>" + esc(f.detail) + "</small></div></li>";
     });
     html += "</ul>";
+  }
+  if (!hadHeaders) {
+    html += '<p class="muted">This version of Outlook doesn\'t let add-ins read email headers, so the SPF/DKIM/DMARC check was skipped.</p>';
   }
   html += '<p class="muted">Checked ' + r.linkCount + " link(s). Everything is analysed on your device; nothing is sent anywhere.</p>";
   show(html);

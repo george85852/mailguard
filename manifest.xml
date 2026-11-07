@@ -5,7 +5,7 @@
            xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
   <Id>ced7cde7-ead0-452d-96b5-11d1aefcfee3</Id>
-  <Version>1.0.1.0</Version>
+  <Version>1.1.0.0</Version>
   <ProviderName>george85852</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="MailGuard"/>
@@ -91,5 +91,94 @@
         <bt:String id="Button.Tooltip" DefaultValue="Check this email for phishing warning signs."/>
       </bt:LongStrings>
     </Resources>
+    <!-- VersionOverrides 1.1: read by newer Outlook (incl. Android/iOS); older clients use the 1.0 section above. -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.5">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="Commands.Url"/>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="mailguardGroup">
+                  <Label resid="Group.Label"/>
+                  <Control xsi:type="Button" id="mailguardScanButton">
+                    <Label resid="Button.Label"/>
+                    <Supertip>
+                      <Title resid="Button.Label"/>
+                      <Description resid="Button.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16"/>
+                      <bt:Image size="32" resid="Icon.32"/>
+                      <bt:Image size="80" resid="Icon.80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+          <MobileFormFactor>
+            <FunctionFile resid="Commands.Url"/>
+            <ExtensionPoint xsi:type="MobileMessageReadCommandSurface">
+              <Group id="mailguardMobileGroup">
+                <Label resid="Group.Label"/>
+                <Control xsi:type="MobileButton" id="mailguardMobileScanButton">
+                  <Label resid="Button.Label"/>
+                  <Icon xsi:type="bt:MobileIconList">
+                    <bt:Image size="25" scale="1" resid="Icon.25x1"/>
+                    <bt:Image size="25" scale="2" resid="Icon.25x2"/>
+                    <bt:Image size="25" scale="3" resid="Icon.25x3"/>
+                    <bt:Image size="32" scale="1" resid="Icon.32x1"/>
+                    <bt:Image size="32" scale="2" resid="Icon.32x2"/>
+                    <bt:Image size="32" scale="3" resid="Icon.32x3"/>
+                    <bt:Image size="48" scale="1" resid="Icon.48x1"/>
+                    <bt:Image size="48" scale="2" resid="Icon.48x2"/>
+                    <bt:Image size="48" scale="3" resid="Icon.48x3"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </ExtensionPoint>
+          </MobileFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16" DefaultValue="https://george85852.github.io/mailguard/assets/icon-16.png"/>
+          <bt:Image id="Icon.32" DefaultValue="https://george85852.github.io/mailguard/assets/icon-32.png"/>
+          <bt:Image id="Icon.80" DefaultValue="https://george85852.github.io/mailguard/assets/icon-80.png"/>
+          <bt:Image id="Icon.25x1" DefaultValue="https://george85852.github.io/mailguard/assets/icon-25.png"/>
+          <bt:Image id="Icon.25x2" DefaultValue="https://george85852.github.io/mailguard/assets/icon-50.png"/>
+          <bt:Image id="Icon.25x3" DefaultValue="https://george85852.github.io/mailguard/assets/icon-75.png"/>
+          <bt:Image id="Icon.32x1" DefaultValue="https://george85852.github.io/mailguard/assets/icon-32.png"/>
+          <bt:Image id="Icon.32x2" DefaultValue="https://george85852.github.io/mailguard/assets/icon-64.png"/>
+          <bt:Image id="Icon.32x3" DefaultValue="https://george85852.github.io/mailguard/assets/icon-96.png"/>
+          <bt:Image id="Icon.48x1" DefaultValue="https://george85852.github.io/mailguard/assets/icon-48.png"/>
+          <bt:Image id="Icon.48x2" DefaultValue="https://george85852.github.io/mailguard/assets/icon-96.png"/>
+          <bt:Image id="Icon.48x3" DefaultValue="https://george85852.github.io/mailguard/assets/icon-144.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="Commands.Url" DefaultValue="https://george85852.github.io/mailguard/src/commands.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://george85852.github.io/mailguard/src/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="Group.Label" DefaultValue="MailGuard"/>
+          <bt:String id="Button.Label" DefaultValue="Scan email"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="Button.Tooltip" DefaultValue="Check this email for phishing warning signs."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>

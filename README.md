@@ -25,7 +25,7 @@ Outlook add-ins load their files from a web address over HTTPS. This repo is ser
 
 ## Install in Outlook
 
-Sideloading (installing your own add-in) needs a computer browser. The Outlook phone app can't do it, but once installed, the add-in shows up wherever your account supports add-ins.
+Sideloading (installing your own add-in) needs a computer browser. The Outlook phone app can't install add-ins itself, but it picks up the ones on your account.
 
 **Outlook on the web / new Outlook for Windows (personal Outlook.com or work account):**
 1. Download `manifest.xml` from this repo (open it on GitHub → **Download raw file**).
@@ -35,6 +35,8 @@ Sideloading (installing your own add-in) needs a computer browser. The Outlook p
 **Classic Outlook for Windows / Mac:** add-ins installed on the web sync automatically. Otherwise use **File → Manage Add-ins** (Windows) or **Get Add-ins** (Mac), which take you to the same page.
 
 **Use it:** open any email and click **Scan email** (MailGuard) in the toolbar. On the web it may sit under the **Apps** button or the **…** menu. Click it again on each email you want to check.
+
+**Outlook on your phone (Android / iPhone):** nothing extra to install. Once the add-in is on your account (steps above), open the Outlook app, open an email, tap the **…** (More) button at the top of the message, then tap **MailGuard / Scan email**. It can take a few minutes, or a restart of the app, to appear the first time. Add-ins on mobile work with Outlook.com and Microsoft 365 accounts (not Gmail/other accounts added to the app). Some mobile versions don't let add-ins read email headers; MailGuard then skips the SPF/DKIM/DMARC check and says so.
 
 > Work/school accounts: your IT admin may have disabled custom add-ins. If **Add a custom add-in** is missing, ask them, or they can deploy `manifest.xml` for you from the Microsoft 365 admin center.
 
